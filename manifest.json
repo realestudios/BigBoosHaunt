@@ -1,0 +1,9 @@
+{
+  "name": "BigBoosHaunt",
+  "version_number": "2.2.0",
+  "website_url": "",
+  "description": "(LLL) Port of Big Boo's Haunt. v62 compatible.",
+	"dependencies": [
+		"IAmBatby-LethalLevelLoader-1.3.10"
+	]
+}
