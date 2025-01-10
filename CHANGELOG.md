@@ -1,3 +1,51 @@
+### 3.1.0
+
+- All areas of the end room now have proper footstep sounds
+
+- Added Masked to the spawn pool
+
+- AudioReverb errors by the ship have been resolved (and hopefully the lag too. Thanks to Zagster for the help)
+
+- PlayOneShot warnings have been resolved
+
+### 3.0.0
+
+- New interior released
+
+- Fires outside main entrance no longer make fireplace sound
+
+- Doors in exterior now have have hold time for interaction
+
+- Merry-go-round music in the exterior is a little bit louder
+
+- Some textures inside the building have been replaced to have proper transparency
+
+- Power Star scrap is now the apparatus
+
+- JLL added as a dependancy
+
+##
+
+### 2.3.2
+
+- Star is no longer ridiculously bright
+
+### 2.3.1
+
+- Power Star now lights up correctly
+
+### 2.3.0
+
+- Drastically reduced file size from 100mb to 25mb
+
+### 2.2.2
+
+- Fixed 1up and Cap making you heavier after you drop them
+
+### 2.2.1
+
+- Added GitHub page
+
 ### 2.2.0
 
 - Splashing sounds caused some networking issues, so they have been removed
