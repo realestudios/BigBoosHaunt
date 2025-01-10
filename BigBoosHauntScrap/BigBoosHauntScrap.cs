@@ -8,6 +8,11 @@ using Unity.Netcode;
 using UnityEngine;
 using LethalLib;
 using LethalLib.Modules;
+using System.Collections;
+using System.Collections.Generic;
+using GameNetcodeStuff;
+using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 namespace BigBoosHaunt
 {
@@ -17,7 +22,7 @@ namespace BigBoosHaunt
     {
         const string GUID = "BigBoosHaunt";
         const string NAME = "BigBoosHaunt";
-        const string VERSION = "2.2.0";
+        const string VERSION = "3.1.0";
 
         public static Plugin instance;
 
@@ -28,12 +33,12 @@ namespace BigBoosHaunt
             string assetDir = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "bigbooshauntscrap");
             AssetBundle bundle = AssetBundle.LoadFromFile(assetDir);
 
-            // Star scrap
+            // Star scrap (Disabled with the advent of the Star Apparatus)
 
-            Item BBHStarItem = bundle.LoadAsset<Item>("Assets/LethalCompany/Mods/BigBoosHaunt/Scrap/Star/BBHStarItem.asset");
-            LethalLib.Modules.NetworkPrefabs.RegisterNetworkPrefab(BBHStarItem.spawnPrefab);
-            LethalLib.Modules.Utilities.FixMixerGroups(BBHStarItem.spawnPrefab);
-            Items.RegisterScrap(BBHStarItem, 20, Levels.LevelTypes.None);
+            //Item BBHStarItem = bundle.LoadAsset<Item>("Assets/LethalCompany/Mods/BigBoosHaunt/Scrap/Star/BBHStarItem.asset");
+            //LethalLib.Modules.NetworkPrefabs.RegisterNetworkPrefab(BBHStarItem.spawnPrefab);
+            //LethalLib.Modules.Utilities.FixMixerGroups(BBHStarItem.spawnPrefab);
+            //Items.RegisterScrap(BBHStarItem, 20, Levels.LevelTypes.None);
 
             // Coin scrap
 
@@ -91,6 +96,13 @@ namespace BigBoosHaunt
             LethalLib.Modules.Utilities.FixMixerGroups(BBHOneUpItem.spawnPrefab);
             Items.RegisterScrap(BBHOneUpItem, 20, Levels.LevelTypes.None);
 
+            // Star Apparatus scrap
+
+            Item BBHStarAppItem = bundle.LoadAsset<Item>("Assets/LethalCompany/Mods/BigBoosHaunt/Scrap/StarApparatus/BBHStarAppItem.asset");
+            LethalLib.Modules.NetworkPrefabs.RegisterNetworkPrefab(BBHStarAppItem.spawnPrefab);
+            LethalLib.Modules.Utilities.FixMixerGroups(BBHStarAppItem.spawnPrefab);
+            Items.RegisterScrap(BBHStarAppItem, 20, Levels.LevelTypes.None);
+
             Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), GUID);
             Logger.LogInfo("Loaded BigBoosHaunt Scrap");
         }
@@ -126,4 +138,22 @@ namespace BigBoosHaunt
         }
     }
 
+    public class DropBlockBBH : MonoBehaviour
+    {
+        [SerializeField] private Animator myAnimationController;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player")) ;
+            myAnimationController.SetBool("DropBlock", true);
+
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Player")) ;
+            myAnimationController.SetBool("DropBlock", false);
+
+        }
+    }
 }
