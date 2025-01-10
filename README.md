@@ -8,7 +8,7 @@ This is a challenging late-game moon featuring 3 fire exits. Be sure to watch af
 
 - Custom scrap
 
-- (somewhat) Functioning moving platform
+- Custom interior
 
 - Spooky atmosphere
 
